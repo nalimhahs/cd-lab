@@ -14,6 +14,12 @@ int power(int n, int p)
 
 char *convert(int num, char *res)
 {
+    if (num <= 0)
+    {
+        strcat(res, "dead");
+        return res;
+    }
+
     int bin[10] = {0};
     int i = 0, j = 0;
     while (num > 0)
@@ -53,6 +59,7 @@ void main(int argc, char *argv[])
         {
             printf("Enter transition state for state %d on 0: ", i);
             scanf("%d", &temp);
+            if (temp < 0) break;
             narr[temp] = 1;
         }
         int num = 0;
@@ -70,6 +77,7 @@ void main(int argc, char *argv[])
         {
             printf("Enter transition state for state %d on 1: ", i);
             scanf("%d", &temp2);
+            if (temp2 < 0) break;
             narr2[temp2] = 1;
         }
         int num2 = 0;
@@ -133,6 +141,8 @@ void main(int argc, char *argv[])
     printf("State\t0\t1\n");
     for (int i = 0; i < k; i++)
     {
+        if (result[i][0] <= 0)
+            continue;
         char *a, *b, *c, d[100] = "", e[100] = "", f[100] = "";
         a = d;
         b = e;
