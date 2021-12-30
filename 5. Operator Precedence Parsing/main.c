@@ -5,7 +5,6 @@
 char *input;
 int i = 0;
 char lasthandle[6], stack[50], handles[][5] = {")E(", "E*E", "E+E", "i", "E^E"};
-//(E) becomes )E( when pushed to stack
 
 int top = 0, l;
 char prec[9][9] = {
@@ -55,7 +54,7 @@ int shift()
 int reduce()
 {
     int i, len, found, t;
-    for (i = 0; i < 5; i++) //selecting handles
+    for (i = 0; i < 5; i++) 
     {
         len = strlen(handles[i]);
         if (stack[top] == handles[i][0] && top + 1 >= len)
@@ -75,7 +74,7 @@ int reduce()
                 top = top - t + 1;
                 strcpy(lasthandle, handles[i]);
                 stack[top + 1] = '\0';
-                return 1; //successful reduction
+                return 1; 
             }
         }
     }
@@ -129,7 +128,7 @@ void main()
     }
 
     if (strcmp(stack, "$E$") == 0)
-        printf("\nAccepted;");
+        printf("\nAccepted\n");
     else
-        printf("\nNot Accepted;");
+        printf("\nNot Accepted\n");
 }
