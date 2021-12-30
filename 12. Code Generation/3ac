@@ -1,0 +1,5 @@
+Z=c/d
+Y=Z*e
+X=b+Y
+W=X-f
+a=W
